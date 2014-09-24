@@ -49,7 +49,7 @@ class ElasticSearch(base.JSONStatsPlugin):
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
-            self.add_guage_value('Cluster/Status', 'levels',
+            self.add_gauge_value('Cluster/Status', 'levels',
                                  STATUS_CODE[data.get('status', 'red')])
             self.add_gauge_value('Cluster/Nodes', 'nodes',
                                  data.get('number_of_nodes', 0))
